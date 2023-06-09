@@ -13,10 +13,10 @@ const Login = () => {
 
     return (
         <div >
-            <div className="hero min-h-screen  bg-cover bg-center" style={{ backgroundImage: "url('https://i.ibb.co/5hdDdk7/vecteezy-chinese-boxing-kung-fu-martial-art-famous-sport-two-boxer-18995494.jpg')" }}>
+            <div className="hero min-h-screen ">
 
          
-         <form onSubmit={handleLogin} className="card-body bg-gray-700 rounded-xl bg-transparent bg-opacity-40 w-96 h-96">
+         <form onSubmit={handleLogin} className="card-body  bg-cover bg-center w-96 h-96"  style={{ backgroundImage: "url('https://i.ibb.co/5hdDdk7/vecteezy-chinese-boxing-kung-fu-martial-art-famous-sport-two-boxer-18995494.jpg')" }}>
               <div className="form-control ">
               <h2 className='text-2xl font-semibold text-white'>Please LOGIN</h2>
                 <label className="label">
