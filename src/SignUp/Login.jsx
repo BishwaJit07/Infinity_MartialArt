@@ -1,11 +1,14 @@
 
 import { FcGoogle } from 'react-icons/fc';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
 
 const Login = () => {
-
-  const {LogIn}= useAuth();
+  const navigate= useNavigate();
+    const location = useLocation();
+      
+    const from = location.state?.from?.pathname || '/'
+    const {logIn,googleSignIn}= useAuth();
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -14,12 +17,25 @@ const Login = () => {
         const password = form.pass.value;
         console.log(email,password);
 
-        LogIn(email,password)
+        logIn(email,password)
         .then(result=>{
           const user = result.user;
           console.log(user);
+
+          navigate(from,{replace:true});
         })
     }
+    
+    const googleLogIn = ()=>{
+           googleSignIn()
+           .then(result=>{
+             const loggedUser= result.user;
+             console.log(loggedUser);
+             navigate(from,{replace:true});
+           })
+    }
+
+
 
     return (
         <div >
@@ -48,7 +64,7 @@ const Login = () => {
 
               <div className="form-control flex justify-center items-center">
          <p className="text-xl  bg-slate-50 rounded-xl my-2 px-2 font-semibold text-gray-700"> or Login With</p>
-          <FcGoogle className="p-2 text-5xl btn  btn-2xl"/>
+          <FcGoogle className="p-2 text-5xl btn  btn-2xl" onClick={googleLogIn}/>
         </div>
               <div className="form-control ">
               <input className="btn  text-white bg-pink-700 hover:bg-blue-600" type="submit" value="Login" />

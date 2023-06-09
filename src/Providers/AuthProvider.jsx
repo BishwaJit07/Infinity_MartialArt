@@ -44,17 +44,17 @@ const AuthProvider = ({ children }) => {
      return createUserWithEmailAndPassword(auth , email , password);
  };
 
-
+ const updateUser = (name, photo) => {
+  return updateProfile(auth.currentUser, {
+    displayName: name,
+    photoURL: photo,
+  });
+};
 
     //  goggle
 
   const Googleprovider = new GoogleAuthProvider();
-  const updateUser = (name, photo) => {
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
-    });
-  };
+
 
   const googleSignIn = () => {
     setLoading(true);
