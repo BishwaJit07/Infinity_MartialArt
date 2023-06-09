@@ -24,15 +24,9 @@ const AuthProvider = ({ children }) => {
 
           const auth = getAuth(app);
         
-          const createUser  = (email, password) =>
-           {
-                 setLoading (true);
-              return createUserWithEmailAndPassword(auth , email , password);
-          };
-
- 
-
-   const signIn = (email , password) => 
+        //   user login
+        
+   const logIn = (email , password) => 
   {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
@@ -42,6 +36,15 @@ const AuthProvider = ({ children }) => {
     setLoading(true);
     return signOut(auth);
   };
+
+            // create new user
+  const createUser  = (email, password) =>
+  {
+        setLoading (true);
+     return createUserWithEmailAndPassword(auth , email , password);
+ };
+
+
 
     //  goggle
 
@@ -73,10 +76,10 @@ const AuthProvider = ({ children }) => {
 
   const authInfo = {
     user,
+    logIn,
+    logOut,
     loading,
     createUser,
-    signIn,
-    logOut,
     updateUser,
     googleSignIn,
   };
