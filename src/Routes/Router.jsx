@@ -8,6 +8,8 @@ import AllClasses from "../Pages/AllClasses";
 
 import AdminHome from "../Pages/DashBoard/Admin/AdminHome";
 import InstructorHome from "../Pages/DashBoard/Instructor/InstructorHome";
+import EnrollClass from "../Pages/DashBoard/Users/EnrollClass";
+import MySelectedClass from "../Pages/DashBoard/Users/MySelectedClass";
 import UserHome from "../Pages/DashBoard/Users/UserHome";
 import Instructors from "../Pages/Instructors";
 import Login from "../SignUp/Login";
@@ -56,9 +58,9 @@ const router = createBrowserRouter([
 
     {
         path:'dashboard',
-        element:<PrivateRoute>
-            <DashBoard/>
-        </PrivateRoute>,
+        element:
+            <DashBoard/>,
+        
         children:[
             {
                 path:'adminhome',
@@ -69,10 +71,20 @@ const router = createBrowserRouter([
                 path:'userhome',
                 element: <UserHome/>,
             },
-            
+
             {
                 path:'instructorhome',
                 element: <InstructorHome/>,
+            },
+            
+            {
+                path:'enrollclass',
+                element: <EnrollClass/>,
+            },
+
+            {
+                path:'myclass',
+                element: <MySelectedClass/>,
             }
         ]
     }

@@ -1,4 +1,5 @@
 
+import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../Hooks/useAuth';
 import UseClasses from '../Hooks/UseClasses';
@@ -6,6 +7,50 @@ import UseClasses from '../Hooks/UseClasses';
 const AllClasses = () => {
     const {user} = useAuth();
     const [martialClass,isclassloading] = UseClasses();
+    const location= useLocation();
+    const navigate = useNavigate();
+    
+    const handleAddToCart = selectedClass =>{
+      console.log(selectedClass);
+      if(user){ 
+        fetch('http://localhost:5000/selected',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(selectedClass)
+        })
+        .then(res=> res.json())
+        .then(data => {
+          if(data.insertedId){
+           
+            Swal.fire(
+              'Well Done!',
+              'Class added To Cart!',
+              'success'
+            )
+          }
+        })
+      }
+
+      else{
+        
+Swal.fire({
+  title: 'Need to Login',
+  text: "With out login you can't add it!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'login!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    navigate('/login', {state:{from: location}}) 
+  }
+})
+      }
+      
+    }
    
     console.log(martialClass);
 
@@ -35,19 +80,9 @@ const AllClasses = () => {
     <p className='badge badge-outline  text-xl  gap-2 font-semibold'>Price:${classItem.Price}</p>
     <p className='text-xl'><span className='font-semibold'>AVialable seat: </span>{classItem.AvailableSeats}</p>
     <div className="card-actions">
-    {user ? (
-    <button className="btn glass bg-pink-700 text-white">Buy Now</button>
-  ) : (
-    <button className="btn glass bg-pink-700 text-white"  onClick={() =>
-        Swal.fire({
-          title: 'Please log in',
-          text: 'Please log in before selecting the course.',
-          icon: 'warning',
-          confirmButtonText: 'OK'
-        }) }>
-      Buy Now
-    </button>
-  )}
+  
+    <button onClick={()=>handleAddToCart(classItem)} className="btn glass bg-pink-700 text-white">Select</button>
+  
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FiLogOut } from "react-icons/fi";
+import { FaCartPlus } from "react-icons/fa";
 
 const Header = () => {
 
@@ -25,7 +26,7 @@ const Header = () => {
      
      <li><NavLink to='/instructors'>Instructors</NavLink></li>
      <li><NavLink to='/Allclasses'>Classes</NavLink></li>
-     <li><NavLink to='/dashboard/userhome'>Dashboard </NavLink></li>
+     <li><NavLink to='/dashboard/adminhome' >Dashboard</NavLink></li>
       </ul>
     </div>
     <a className="font-bold text-xl text-pink-600">InfinityMarttialArts</a>
@@ -36,7 +37,7 @@ const Header = () => {
      
      <li><NavLink to='/instructors'>Instructors</NavLink></li>
      <li><NavLink to='/Allclasses'>Classes</NavLink></li>
-     <li><NavLink to='/dashboard/userhome'>Dashboard </NavLink></li>
+     <li><NavLink to='/dashboard/adminhome' >DashBoard  </NavLink></li>
     </ul>
   </div>
   <div className="navbar-end">
