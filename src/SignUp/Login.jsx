@@ -2,13 +2,14 @@
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useAuth from '../Hooks/useAuth';
+import GoogleLogin from '../Shared/GoogleLogin';
 
 const Login = () => {
   const navigate= useNavigate();
     const location = useLocation();
       
     const from = location.state?.from?.pathname || '/'
-    const {logIn,googleSignIn}= useAuth();
+    const {logIn,}= useAuth();
 
     const handleLogin =(e)=>{
         e.preventDefault();
@@ -26,14 +27,7 @@ const Login = () => {
         })
     }
     
-    const googleLogIn = ()=>{
-           googleSignIn()
-           .then(result=>{
-             const loggedUser= result.user;
-             console.log(loggedUser);
-             navigate(from,{replace:true});
-           })
-    }
+   
 
 
 
@@ -62,10 +56,9 @@ const Login = () => {
               
               </div>
 
-              <div className="form-control flex justify-center items-center">
-         <p className="text-xl  bg-slate-50 rounded-xl my-2 px-2 font-semibold text-gray-700"> or Login With</p>
-          <FcGoogle className="p-2 text-5xl btn  btn-2xl" onClick={googleLogIn}/>
-        </div>
+             <div>
+              <GoogleLogin/>
+             </div>
               <div className="form-control ">
               <input className="btn  text-white bg-pink-700 hover:bg-blue-600" type="submit" value="Login" />
                 <label className="label">

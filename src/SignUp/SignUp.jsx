@@ -1,11 +1,14 @@
-import { FcGoogle } from "react-icons/fc";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
-
+import GoogleLogin from "../Shared/GoogleLogin";
 
 const SignUp = () => {
   const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
+
   const {
     register,
     handleSubmit,
@@ -18,7 +21,8 @@ const SignUp = () => {
   const { createUser, updateUser } = useAuth();
 
   const onSubmit = (data) => {
-    createUser(data.email, data.pass).then((res) => {
+    createUser(data.email, data.pass)
+    .then((res) => {
       const loggedUser = res.user;
       console.log(loggedUser);
 
@@ -28,7 +32,8 @@ const SignUp = () => {
             name: data.name,
             email: data.email,
             photoURL: data.photoURL,
-          }
+            role: "student",
+          };
           fetch("http://localhost:5000/users", {
             method: "POST",
             headers: {
@@ -41,7 +46,7 @@ const SignUp = () => {
               if (data.insertedId) {
                 reset();
 
-                navigate("/");
+                navigate(from, { replace: true });
               }
             });
         })
@@ -169,12 +174,8 @@ const SignUp = () => {
           )}
         </div>
 
-        <div className="form-control flex justify-center items-center">
-          <p className="text-xl  bg-slate-50 rounded-xl m-2 px-2 font-semibold text-gray-700">
-            {" "}
-            or SignUp With
-          </p>
-          <FcGoogle className="p-2 text-5xl btn  btn-2xl" />
+        <div>
+          <GoogleLogin />
         </div>
         <div className="form-control ">
           <input
