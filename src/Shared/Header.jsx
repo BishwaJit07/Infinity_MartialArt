@@ -2,12 +2,14 @@ import { Link, NavLink } from "react-router-dom";
 import useAuth from "../Hooks/useAuth";
 import { FiLogOut } from "react-icons/fi";
 import { FaCartPlus } from "react-icons/fa";
+import useSelectedClass from "../Hooks/useSelectedClass";
 
 const Header = () => {
 
   const {user,logOut}= useAuth();
   console.log(user);
-
+  const {sClass,refetch}= useSelectedClass();
+  console.log(sClass);
   const handleLogOut =()=>{
     logOut()
     .then(()=>{})
@@ -45,11 +47,14 @@ const Header = () => {
   <div className="flex justify-center items-center">
     
   {user.photoURL &&
-   ( <div className="avatar">
+   (<div className="indicator">
+   <span className="indicator-item badge badge-secondary">{sClass?.length}</span> 
+   <div className="avatar">
    <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
     <img src= {user.photoURL} alt="" />
    </div>
- </div>)
+ </div>
+ </div> )
   }
 <button onClick={handleLogOut} className="p-2 rounded-2xl text-2xl text-white bg-pink-700 mx-4"><FiLogOut/></button> 
   </div>

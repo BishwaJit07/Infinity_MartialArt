@@ -15,7 +15,8 @@ import Instructors from "../Pages/Instructors";
 import Login from "../SignUp/Login";
 
 import SignUp from "../SignUp/SignUp";
-import PrivateRoute from "./PrivateRoute";
+
+
 
 
 const router = createBrowserRouter([
@@ -59,7 +60,9 @@ const router = createBrowserRouter([
     {
         path:'dashboard',
         element:
-            <DashBoard/>,
+              <DashBoard/>
+       ,
+           
         
         children:[
             {
@@ -76,7 +79,7 @@ const router = createBrowserRouter([
                 path:'instructorhome',
                 element: <InstructorHome/>,
             },
-            
+
             {
                 path:'enrollclass',
                 element: <EnrollClass/>,

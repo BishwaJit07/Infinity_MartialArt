@@ -3,22 +3,31 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import useAuth from '../Hooks/useAuth';
 import UseClasses from '../Hooks/UseClasses';
+import useSelectedClass from '../Hooks/useSelectedClass';
 
 const AllClasses = () => {
     const {user} = useAuth();
-    const [martialClass,isclassloading] = UseClasses();
+    const {refetch} = useSelectedClass();
+    const [martialClass] = UseClasses();
     const location= useLocation();
     const navigate = useNavigate();
     
     const handleAddToCart = selectedClass =>{
       console.log(selectedClass);
       if(user){ 
+        const classDetails ={classid:selectedClass._id,
+          Image:selectedClass.Image,
+          AvailableSeats:selectedClass.AvailableSeats,
+          InstructorName:selectedClass.InstructorName,
+          Price:selectedClass.Price,
+          Name:selectedClass.name,
+          email:user.email}
         fetch('http://localhost:5000/selected',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(selectedClass)
+          body: JSON.stringify(classDetails)
         })
         .then(res=> res.json())
         .then(data => {
@@ -29,6 +38,7 @@ const AllClasses = () => {
               'Class added To Cart!',
               'success'
             )
+            refetch();
           }
         })
       }
@@ -54,12 +64,7 @@ Swal.fire({
    
     console.log(martialClass);
 
-    if (isclassloading) {
-        return <div className='flex justify-center items-center '><span className="loading loading-bars loading-xs"></span>
-        <span className="loading loading-bars loading-sm"></span>
-        <span className="loading loading-bars loading-md"></span>
-        <span className="loading loading-bars loading-lg"></span></div>;
-      }
+ 
     return (
        <div>
          <div className='grid grid-cols-1
