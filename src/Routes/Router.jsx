@@ -1,13 +1,19 @@
 import { createBrowserRouter } from "react-router-dom";
 import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Home/Home";
+import DashBoard from "../Layouts/DashBoard";
 import Main from "../Layouts/Main";
-import Classes from "../Pages/Classes";
-import Dashboard from "../Pages/Dashboard";
+import AllClasses from "../Pages/AllClasses";
+
+
+import AdminHome from "../Pages/DashBoard/Admin/AdminHome";
+import InstructorHome from "../Pages/DashBoard/Instructor/InstructorHome";
+import UserHome from "../Pages/DashBoard/Users/UserHome";
 import Instructors from "../Pages/Instructors";
 import Login from "../SignUp/Login";
 
 import SignUp from "../SignUp/SignUp";
+import PrivateRoute from "./PrivateRoute";
 
 
 const router = createBrowserRouter([
@@ -27,13 +33,13 @@ const router = createBrowserRouter([
             }
             ,
             {
-                path:"/classes",
-                element:<Classes/>
+                path:"/Allclasses",
+                element:<AllClasses/>
             }
             ,
             {
                 path:"/dashboard",
-                element:<Dashboard/>
+                element:<DashBoard/>
             }
             ,
             {
@@ -44,6 +50,29 @@ const router = createBrowserRouter([
             {
                 path:"/signup",
                 element:<SignUp/>
+            }
+        ]
+    },
+
+    {
+        path:'dashboard',
+        element:<PrivateRoute>
+            <DashBoard/>
+        </PrivateRoute>,
+        children:[
+            {
+                path:'adminhome',
+                element: <AdminHome/>,
+            },
+
+            {
+                path:'userhome',
+                element: <UserHome/>,
+            },
+            
+            {
+                path:'instructorhome',
+                element: <InstructorHome/>,
             }
         ]
     }

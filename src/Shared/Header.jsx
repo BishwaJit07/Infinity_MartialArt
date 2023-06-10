@@ -14,7 +14,7 @@ const Header = () => {
   }
     return (
         <div>
-            <div className="navbar bg-blue-900 bg-transparent bg-opacity-50 fixed z-10 max-w-screen-xl" >
+            <div className="navbar bg-blue-900 bg-opacity-75 fixed z-10 max-w-screen-xl" >
   <div className="navbar-start">
     <div className="dropdown" >
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -24,19 +24,19 @@ const Header = () => {
       <li ><NavLink to='/' >Home</NavLink></li>
      
      <li><NavLink to='/instructors'>Instructors</NavLink></li>
-     <li><NavLink to='/classes'>Classes</NavLink></li>
-     <li><NavLink to='/dashboard'>Dashboard </NavLink></li>
+     <li><NavLink to='/Allclasses'>Classes</NavLink></li>
+     <li><NavLink to='/dashboard/userhome'>Dashboard </NavLink></li>
       </ul>
     </div>
     <a className="font-bold text-xl text-pink-600">InfinityMarttialArts</a>
   </div>
   <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1 font-semibold text-white ">
-    <li><Link to='/'>Home</Link></li>
+    <li><NavLink to='/'>Home</NavLink></li>
      
-     <li><Link to='/instructors'>Instructors</Link></li>
-     <li><Link to='/classes'>Classes</Link></li>
-     <li><Link to='/dashboard'>Dashboard </Link></li>
+     <li><NavLink to='/instructors'>Instructors</NavLink></li>
+     <li><NavLink to='/Allclasses'>Classes</NavLink></li>
+     <li><NavLink to='/dashboard/userhome'>Dashboard </NavLink></li>
     </ul>
   </div>
   <div className="navbar-end">
