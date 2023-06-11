@@ -8,7 +8,7 @@ const Header = () => {
 
   const {user,logOut}= useAuth();
   console.log(user);
-  const {sClass,refetch}= useSelectedClass();
+  const {sClass}= useSelectedClass();
   console.log(sClass);
   const handleLogOut =()=>{
     logOut()
