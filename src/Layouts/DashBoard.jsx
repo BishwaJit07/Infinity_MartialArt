@@ -3,9 +3,16 @@ import { GiClassicalKnowledge } from "react-icons/gi";
 import { AiOutlineUsergroupDelete } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
+import UseAdmin from "../Hooks/UseAdmin";
+import UseInstructor from "../Hooks/UseInstructor";
 
 const DashBoard = () => {
-  const isAdmin = true;
+
+  // const isAdmin = false;
+
+  const [isAdmin] = UseAdmin();
+const [isInstructor]= UseInstructor();
+console.log('isInstructor',isInstructor);
   return (
     <div className="drawer lg:drawer-open">
       <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
