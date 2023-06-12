@@ -17,6 +17,7 @@ import Login from "../SignUp/Login";
 import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashHome from "../Pages/DashBoard/Admin/DashHome";
+import Payments from "../Pages/DashBoard/Payments";
 
 
 
@@ -67,7 +68,7 @@ const router = createBrowserRouter([
        ,
         children:[
             {
-                path:'DashHome',
+                path:'dashhome',
                 element:<DashHome/> ,
             },
             {
@@ -97,6 +98,10 @@ const router = createBrowserRouter([
             {
                 path:'myclass',
                 element:<MySelectedClass/>,
+            },
+            {
+                path:'payment',
+                element:<Payments/>,
             }
         ]
     }

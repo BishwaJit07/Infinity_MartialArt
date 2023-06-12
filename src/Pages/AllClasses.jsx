@@ -16,11 +16,12 @@ const AllClasses = () => {
       console.log(selectedClass);
       if(user){ 
         const classDetails ={classid:selectedClass._id,
+          Name:selectedClass.Name,
           Image:selectedClass.Image,
           AvailableSeats:selectedClass.AvailableSeats,
           InstructorName:selectedClass.InstructorName,
           Price:selectedClass.Price,
-          Name:selectedClass.name,
+          
           email:user.email}
         fetch('http://localhost:5000/selected',{
           method: 'POST',
