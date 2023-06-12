@@ -28,7 +28,7 @@ const Header = () => {
      
      <li><NavLink to='/instructors'>Instructors</NavLink></li>
      <li><NavLink to='/Allclasses'>Classes</NavLink></li>
-     <li><NavLink to='/dashboard/adminhome' >Dashboard</NavLink></li>
+     <li><NavLink to='/dashboard/DashHome' >Dashboard</NavLink></li>
       </ul>
     </div>
     <a className="font-bold text-xl text-pink-600">InfinityMarttialArts</a>

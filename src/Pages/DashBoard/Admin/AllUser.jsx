@@ -111,7 +111,7 @@ const AllUser = () => {
                   </td>
 
                   <th>
-                    {user?.role1 === "instrctor" ? (
+                    {user?.role1 === "instructor" ? (
                       <button className="btn bg-blue-500 rounded-full" disabled>
                         <MdSportsMartialArts className="text-white font-extrabold text-2xl " />
                       </button>

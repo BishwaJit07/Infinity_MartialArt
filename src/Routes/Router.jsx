@@ -5,9 +5,8 @@ import DashBoard from "../Layouts/DashBoard";
 import Main from "../Layouts/Main";
 import AllClasses from "../Pages/AllClasses";
 
-
-import AdminHome from "../Pages/DashBoard/Admin/AdminHome";
 import AllUser from "../Pages/DashBoard/Admin/AllUser";
+import MangeClasses from "../Pages/DashBoard/Admin/MangeClasses";
 import InstructorHome from "../Pages/DashBoard/Instructor/InstructorHome";
 import EnrollClass from "../Pages/DashBoard/Users/EnrollClass";
 import MySelectedClass from "../Pages/DashBoard/Users/MySelectedClass";
@@ -17,6 +16,7 @@ import Login from "../SignUp/Login";
 
 import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
+import DashHome from "../Pages/DashBoard/Admin/DashHome";
 
 
 
@@ -63,15 +63,16 @@ const router = createBrowserRouter([
         path:'dashboard',
         element:<PrivateRoute>
                    <DashBoard/>
-        </PrivateRoute>
-              
+        </PrivateRoute>        
        ,
-           
-        
         children:[
             {
-                path:'adminhome',
-                element: <AdminHome/>,
+                path:'DashHome',
+                element:<DashHome/> ,
+            },
+            {
+                path:'manageclasses',
+                element: <MangeClasses/>,
             },
 
             {
@@ -95,7 +96,7 @@ const router = createBrowserRouter([
 
             {
                 path:'myclass',
-                element: <MySelectedClass/>,
+                element:<MySelectedClass/>,
             }
         ]
     }

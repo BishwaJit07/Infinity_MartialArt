@@ -6,6 +6,7 @@ const GoogleLogin = () => {
 
 const {googleSignIn}= useAuth();
 const navigate= useNavigate();
+
     const location = useLocation();
       
     const from = location.state?.from?.pathname || '/'
@@ -14,7 +15,7 @@ const navigate= useNavigate();
         googleSignIn()
         .then(result=>{
           const loggedUser= result.user;
-          console.log(loggedUser);
+          console.log('loggedUser',loggedUser);
           const saveUser = {
             name: loggedUser.displayName,
             email: loggedUser.email,

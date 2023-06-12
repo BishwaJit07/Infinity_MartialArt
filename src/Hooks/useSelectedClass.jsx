@@ -18,7 +18,7 @@ const useSelectedClass = () => {
 
   const { refetch, data: sClass = [] } = useQuery({
     queryKey: ["sClass", user?.email],
-    enabled: !loading,
+    enabled: !loading && !!user?.email && !!localStorage.getItem('jwt-access-token'),
     queryFn: async () => {
       const res = await axiosSecure(`/selected?email=${user?.email}`);
       console.log("res frm axios", res);

@@ -1,10 +1,11 @@
 import { FaClipboardCheck, FaHome } from "react-icons/fa";
 import { GiClassicalKnowledge } from "react-icons/gi";
-import { AiOutlineUsergroupDelete } from "react-icons/ai";
+import { AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
 import UseAdmin from "../Hooks/UseAdmin";
 import UseInstructor from "../Hooks/UseInstructor";
+import { MdClass } from "react-icons/md";
 
 const DashBoard = () => {
 
@@ -12,6 +13,7 @@ const DashBoard = () => {
 
   const [isAdmin] = UseAdmin();
 const [isInstructor]= UseInstructor();
+
 console.log('isInstructor',isInstructor);
   return (
     <div className="drawer lg:drawer-open">
@@ -30,10 +32,109 @@ console.log('isInstructor',isInstructor);
       <div className="drawer-side">
         <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
         <ul className="menu p-4 w-80 h-full bg-gray-300 text-base-content">
+          <img src='https://i.ibb.co/NNL4RpY/Screenshot-50-removebg-preview.png' alt="" className="mb-4" />
           {/* Sidebar content here */}
 
+
+ {/* Admin and Instructor */}
+ {isAdmin && isInstructor && (
+          <>
+            <li>
+              <Link to="adminhome" className="text-xl font-semibold">
+                <FaHome />
+                Admin
+              </Link>
+            </li>
+            <li>
+              <Link to="alluser" className="text-xl font-semibold">
+                <AiOutlineUsergroupAdd />
+                ManageUser
+              </Link>
+            </li>
+            <li>
+              <Link to="manageclasses" className="text-xl font-semibold">
+                <MdClass />
+                ManageClasses
+              </Link>
+            </li>
+          </>
+        )}
+
+        {/* Admin Only */}
+        {isAdmin && !isInstructor && (
+          <>
+            <li>
+              <Link to="adminhome" className="text-xl font-semibold">
+                <FaHome />
+                Admin
+              </Link>
+            </li>
+            <li>
+              <Link to="alluser" className="text-xl font-semibold">
+                <AiOutlineUsergroupAdd />
+                ManageUser
+              </Link>
+            </li>
+            <li>
+              <Link to="manageclasses" className="text-xl font-semibold">
+                <MdClass />
+                ManageClasses
+              </Link>
+            </li>
+          </>
+        )}
+
+        {/* Instructor Only */}
+        {!isAdmin && isInstructor && (
+          <>
+            <li>
+              <Link to="addclasses" className="text-xl font-semibold">
+                <MdClass />
+                Add a Class
+              </Link>
+            </li>
+            <li>
+              <Link to="myclasses" className="text-xl font-semibold">
+                <MdClass />
+                My Classes
+              </Link>
+            </li>
+          
+          </>
+        )}
+
+        {/* None of them */}
+        {!isAdmin && !isInstructor && (
+          <>
+            <li>
+                <Link to="userhome" className="text-xl font-semibold">
+                  <AiOutlineUsergroupDelete />
+                  User
+                </Link>
+              </li>
+              <li>
+                <Link to="myclass" className="text-xl font-semibold">
+                  {" "}
+                  <GiClassicalKnowledge />
+                  My Selected Classes
+                </Link>
+              </li>
+              <li>
+                <Link to="enrollclass" className="text-xl font-semibold">
+                  {" "}
+                  <TiTick />
+                  Enroll Classes
+                </Link>
+              </li>
+          </>
+        )}
+
+
+
           {/* admin content  */}
-          {isAdmin ? (
+
+          
+          {/* {isAdmin ? (
             <>
               <li>
                 <Link to="adminhome" className="text-xl font-semibold">
@@ -42,9 +143,15 @@ console.log('isInstructor',isInstructor);
                 </Link>
               </li>
               <li>
-                <Link to="AllUser" className="text-xl font-semibold">
-                  <AiOutlineUsergroupDelete />
+                <Link to="alluser" className="text-xl font-semibold">
+                  <AiOutlineUsergroupAdd />
                   ManageUser
+                </Link>
+              </li>
+              <li>
+                <Link to="manageclasses" className="text-xl font-semibold">
+                  <MdClass />
+                  ManageClasses
                 </Link>
               </li>
 
@@ -72,7 +179,7 @@ console.log('isInstructor',isInstructor);
                 </Link>
               </li>
             </>
-          )}
+          )} */}
 
           <div className="divider"></div>
 
