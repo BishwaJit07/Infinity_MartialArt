@@ -1,3 +1,4 @@
+
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
@@ -8,7 +9,7 @@ const stripePromise = loadStripe(import.meta.env.VITE_gateway_Key);
 const Payments = () => {
   const { sClass } = useSelectedClass();
   const total = Array.isArray(sClass)
-    ? sClass.reduce((sum, item) => item.price + sum, 0)
+    ? sClass.reduce((sum, item) => item.Price + sum, 0)
     : 0;
   const totalPrice = parseFloat(total.toFixed(2));
   return (

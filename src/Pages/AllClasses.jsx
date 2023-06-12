@@ -1,17 +1,23 @@
 
+import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import UseAdmin from '../Hooks/UseAdmin';
 import useAuth from '../Hooks/useAuth';
 import UseClasses from '../Hooks/UseClasses';
+import UseInstructor from '../Hooks/UseInstructor';
 import useSelectedClass from '../Hooks/useSelectedClass';
 
 const AllClasses = () => {
     const {user} = useAuth();
     const {refetch} = useSelectedClass();
+    const [isAdmin] = UseAdmin();
+const [isInstructor]= UseInstructor();
     const [martialClass] = UseClasses();
     const location= useLocation();
     const navigate = useNavigate();
-    
+
+   
     const handleAddToCart = selectedClass =>{
       console.log(selectedClass);
       if(user){ 
@@ -42,6 +48,7 @@ const AllClasses = () => {
             refetch();
           }
         })
+        
       }
 
       else{
@@ -87,7 +94,7 @@ Swal.fire({
     <p className='text-xl'><span className='font-semibold'>AVialable seat: </span>{classItem.AvailableSeats}</p>
     <div className="card-actions">
   
-    <button onClick={()=>handleAddToCart(classItem)} className="btn glass bg-pink-700 text-white">Select</button>
+    <button onClick={()=>handleAddToCart(classItem)} className="btn glass bg-pink-700 text-white"  disabled={isAdmin || isInstructor ||classItem.AvailableSeats === 0} >Select</button>
   
     </div>
   </div>
