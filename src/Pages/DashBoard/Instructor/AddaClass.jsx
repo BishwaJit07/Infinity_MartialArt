@@ -24,7 +24,7 @@ const AddaClass = () => {
     const { name, value } = event.target;
     setClassData((prevData) => ({
       ...prevData,
-      [name]: name === "Price" ? parseInt(value) : value,
+      [name]: name === "Price" || name === "AvailableSeats"? parseInt(value) : value,
     }));
   };
 
@@ -45,7 +45,7 @@ const AddaClass = () => {
       status: "pending",
     });
 
-    fetch('http://localhost:5000/classes',{
+    fetch('https://infinitymarttialarts.vercel.app/classes',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

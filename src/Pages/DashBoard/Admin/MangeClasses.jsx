@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
-import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 import UseClasses from "../../../Hooks/UseClasses";
 import { AuthContext } from "../../../Providers/AuthProvider";
 
@@ -9,7 +10,7 @@ const MangeClasses = () => {
   const [feedback, setFeedback] = useState("");
   const [statusN, setStatusN] = useState("");
   const [martialClass,refetch] = UseClasses();
- 
+  
 
   const handleFeedbackChange = (event) => {
     const { value } = event.target;
@@ -31,7 +32,7 @@ const MangeClasses = () => {
       return;
     }
 
-    fetch(`http://localhost:5000/classes/${classItem._id}`, {
+    fetch(`https://infinitymarttialarts.vercel.app/classes/${classItem._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -40,13 +41,14 @@ const MangeClasses = () => {
         id: classItem._id,
         feedback: feedback,
         status: statusN,
+        enrolled: 0,
       }),
     })
       .then((response) => response.json()) // Parse the response as JSON
       .then((data) => {
         console.log(data);
-        if (data.modifiedCount > 0) { // Check the modifiedCount property
-          refetch();
+        if (data.modifiedCount > 0) {   refetch();
+          
           Swal.fire({
             title: "Sweet!",
             text: 'done',
@@ -55,8 +57,7 @@ const MangeClasses = () => {
             imageWidth: 200,
             imageHeight: 200,
             imageAlt: "Custom image",
-          });
-          
+          }); 
         }
       })
       .catch((error) => {
@@ -136,11 +137,11 @@ const MangeClasses = () => {
                 <td>
                   <select
                     className="select select-primary w-full max-w-xs"
-                    defaultValue={classItem?.status||""}
+                    defaultValue={classItem?.status}
                     onChange={(event) => handleStatusChange(event, classItem)}
                   >
-                    <option disabled value="">Select a status
-                      
+                    <option disabled value= {classItem?.status}>
+                    {classItem?.status}
                     </option>
                     <option value="Approve">Approve</option>
                     <option value="Deny">Deny</option>

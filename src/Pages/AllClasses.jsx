@@ -27,9 +27,10 @@ const [isInstructor]= UseInstructor();
           AvailableSeats:selectedClass.AvailableSeats,
           InstructorName:selectedClass.InstructorName,
           Price:selectedClass.Price,
+         
           
           email:user.email}
-        fetch('http://localhost:5000/selected',{
+        fetch('https://infinitymarttialarts.vercel.app/selected',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

@@ -1,26 +1,55 @@
 import { useQuery } from "@tanstack/react-query";
+import { AiFillDelete } from "react-icons/ai";
+import { FiDelete } from "react-icons/fi";
 import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAxiosSecure from "../../../Hooks/useAxiosSecure";
+
 import useSelectedClass from "../../../Hooks/useSelectedClass";
 
-
-
 const MySelectedClass = () => {
+  const { sClass, refetch } = useSelectedClass();
+const [axiosSecure]= useAxiosSecure();
+  console.log(sClass);
 
+  const handleDelete = (userClasss) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/selected/${userClasss._id}`).then((res) => {
+          console.log("deleted res", res.data);
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire("Deleted!", "Your selected class has been deleted.", "success");
+          }
+        });
+      }
+    });
+  };
 
+  const total = Array.isArray(sClass)
+    ? sClass.reduce((sum, item) => item.Price + sum, 0)
+    : 0;
 
-const {sClass}= useSelectedClass();
-  
-console.log(sClass);
-
-const total = Array.isArray(sClass)
-? sClass.reduce((sum, item) => item.Price + sum, 0)
-: 0;
-
-    return (
-        <div>
-              <div className="overflow-x-auto">
-                <div className="flex justify-between"><p className="text-xl font-bold">Total:${total}</p>
-                <Link to='/dashboard/payment' className="btn btn-secondary text-white hover:bg-red-500">Pay</Link></div>
+  return (
+    <div>
+      <div className="overflow-x-auto">
+        <div className="flex justify-between">
+          <p className="text-xl font-bold">Total:${total}</p>
+          <Link
+            to="/dashboard/payment"
+            className="btn btn-secondary text-white hover:bg-red-500"
+          >
+            Pay
+          </Link>
+        </div>
         <table className="table bg-gray-200 my-4">
           {/* head */}
           <thead>
@@ -33,16 +62,15 @@ const total = Array.isArray(sClass)
               <th>Name</th>
               <th>Available Seat</th>
               <th>Price</th>
-              
             </tr>
           </thead>
           <tbody>
             {/* row 1 */}
-            
-               {Array.isArray(sClass) &&sClass.map((userClasss,index)=>
-              
-                  <tr key={sClass._id}>
-                  <th>{index+1}</th>
+
+            {Array.isArray(sClass) &&
+              sClass.map((userClasss, index) => (
+                <tr key={sClass._id}>
+                  <th>{index + 1}</th>
                   <td>
                     <div className="flex items-center space-x-3">
                       <div className="avatar">
@@ -55,23 +83,28 @@ const total = Array.isArray(sClass)
                       </div>
                       <div>
                         <div className="font-bold">{userClasss.Name}</div>
-                        <div className="text-sm opacity-50">{userClasss.InstructorName}</div>
+                        <div className="text-sm opacity-50">
+                          {userClasss.InstructorName}
+                        </div>
                       </div>
                     </div>
                   </td>
                   <td>{userClasss.AvailableSeats}</td>
-                <td>${userClasss.Price}</td>
-                
-                
+                  <td>${userClasss.Price}</td>
+
+                  <td
+                    onClick={() => handleDelete(userClasss)}
+                    className="btn bg-red-600 rounded-full m-2 hover:bg-red-900"
+                  >
+                    <AiFillDelete className="text-white text-xl " />
+                  </td>
                 </tr>
-                 
-                )} 
-              
+              ))}
           </tbody>
         </table>
       </div>
-        </div>
-    );
+    </div>
+  );
 };
 
 export default MySelectedClass;

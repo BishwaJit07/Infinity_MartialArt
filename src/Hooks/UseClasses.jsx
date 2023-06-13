@@ -3,20 +3,11 @@ import {  useQuery } from "@tanstack/react-query";
 
 const UseClasses = () => {
     
-// const [martialClass, setmartialClass] = useState([])
-//            const [loading,setLoading]= useState(true);
 
-//     useEffect(()=>{
-//         fetch('http://localhost:5000/classes')
-//         .then(res=> res.json())
-//         .then(data=>{
-//             setmartialClass(data)})
-//            setLoading(false)
-//     },[])
 
 
     const { data: martialClass = [], refetch  } = useQuery(['marttialclass'], async () => {
-        const res = await fetch('http://localhost:5000/classes');
+        const res = await fetch('https://infinitymarttialarts.vercel.app/classes');
         return res.json();
       });
 

@@ -7,37 +7,55 @@ const MyClasses = () => {
     const {user}= useAuth();
     return (
         <div>
-         <div className='grid grid-cols-1
-        md:grid-cols-2 mx-auto content-center	'>
-            {martialClass.map((classItem) => {
+        <table className="table bg-gray-200 m-4">
+  <thead>
+    <tr>
+      <th></th>
+      <th>Name</th>
+      <th>Instructor</th>
+      <th>Available Seats</th>
+      <th>Price</th>
+      <th>Feedback</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    {martialClass.map((classItem) => {
+      if (classItem.InstructorEmail === user.email) {
+        const trClassName = classItem.AvailableSeats === 0 ||classItem.status==="Deny" ? "bg-red-500 text-white text-xl font-semibold p-4 rounded" : "";
+        return (
+          <tr key={classItem._id} >
+            <td>
+            <div className="mask mask-squircle w-20 h-20">
+                        <img
+                          src={classItem.Image}
+                          alt="Avatar Tailwind CSS Component"
+                        />
+                      </div>
               
- if (classItem.InstructorEmail === user.email) {
-    return (
-      <div key={classItem._id} >
-        
+            </td>
+            <td>{classItem.Name}</td>
+            <td>{classItem.InstructorName}</td>
+            <td > 
+            <span className={trClassName}>{classItem.AvailableSeats}</span></td>
+            <td>${classItem.Price}</td>
+            <td >{classItem.feedback}</td>
+            <td>
+              <span
+                className={trClassName}
+              >
+                {classItem.status}
+              </span>
+            </td>
+          </tr>
+        );
+      } else {
+        return null;
+      }
+    })}
+  </tbody>
+</table>
 
-      <div className={`${
-              classItem.AvailableSeats === 0 ? "bg-red-500" : "bg-gray-300"
-            } grid-card   shadow-2xl m-4 rounded-2xl`}>
-        <figure className="px-10 pt-10">
-        <img src={classItem.Image} alt={classItem.Name} className="rounded-xl w-96 h-80" />
-        </figure>
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">{classItem.Name}</h2>
-          <p className='text-xl'><span className='font-semibold'>InstructorName: </span>{classItem.InstructorName}</p>
-          <p className='badge badge-outline  text-xl  gap-2 font-semibold'>Price:${classItem.Price}</p>
-          <p className='text-xl'><span className='font-semibold'>AVialable seat: </span>{classItem.AvailableSeats}</p>
-          <p className='font-semibold my-2'>status: <span className='bg-red-600 text-white p-2 rounded-full'>{classItem.status}</span></p>
-          {classItem?.status==="Deny" &&<p className='font-semibold'>AdminFeedBack: <span className='bg-green-600 text-white p-2 rounded '>{classItem?.feedback}</span></p>}
-        </div>
-      </div>
-              </div>
-    );
-  } else {
-    return null; 
-  }
-})}
-        </div>
        </div>
     );
 };
