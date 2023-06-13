@@ -10,7 +10,7 @@ const Instructors = () => {
 
   return (
    
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center ">
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-center ">
     {Array.isArray(users) &&
       users.map((user) => {
         if (user.role1 === "instructor") {

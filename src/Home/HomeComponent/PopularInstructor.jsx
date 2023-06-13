@@ -15,7 +15,7 @@ const PopularInstructor = () => {
     return (
     <div>
             <h3 className="text-center text-white text-4xl font font-semibold font-serif bg-blue-700 p-2 rounded mx-4">Popular Instructors</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 justify-center ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center ">
               
   {Array.isArray(instructors) &&
   instructors

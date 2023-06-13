@@ -98,27 +98,27 @@ const Header = () => {
             </li>
 
             {/* conditional dashboard homepage */}
-
+            
             {isAdmin && isInstructor && (
               <li>
-                <NavLink to="/dashboard/dashhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/alluser">DashBoard </NavLink>
               </li>
             )}
 
             {isAdmin && !isInstructor && (
               <li>
-                <NavLink to="/dashboard/dashhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/alluser">DashBoard </NavLink>
               </li>
             )}
 
             {!isAdmin && isInstructor && (
               <li>
-                <NavLink to="/dashboard/instructorhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/myclasses">DashBoard </NavLink>
               </li>
             )}
             {!isAdmin && !isInstructor && (
               <li>
-                <NavLink to="/dashboard/userhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/myselectedclass">DashBoard </NavLink>
               </li>
             )}
 
@@ -130,9 +130,11 @@ const Header = () => {
             <div className="flex justify-center items-center">
               {user?.photoURL && (
                 <div className="indicator">
-                  <span className="indicator-item badge badge-secondary">
-                    {sClass?.length}
-                  </span>
+                 {sClass?.length !==0 &&
+                   <span className="indicator-item badge badge-secondary">
+                   {sClass?.length}
+                 </span>
+                 }
                   <div className="avatar">
                     <div className="w-10 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
                       <img src={user?.photoURL} alt="" />

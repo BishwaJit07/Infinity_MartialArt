@@ -75,9 +75,7 @@ const MangeClasses = () => {
           <thead>
             <tr>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+                
               </th>
               <th>Name</th>
               <th>Instructor</th>

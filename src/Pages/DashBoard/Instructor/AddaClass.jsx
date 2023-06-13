@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+
 
 import { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -6,7 +8,8 @@ import useAuth from '../../../Hooks/useAuth';
 
 const AddaClass = () => {
     const {user}= useAuth();
-    
+    const navigate = useNavigate();
+
   const [classData, setClassData] = useState({
     Name: "",
     Image: "",
@@ -21,7 +24,7 @@ const AddaClass = () => {
     const { name, value } = event.target;
     setClassData((prevData) => ({
       ...prevData,
-      [name]: value,
+      [name]: name === "Price" ? parseInt(value) : value,
     }));
   };
 
@@ -57,7 +60,8 @@ const AddaClass = () => {
               'Well Done!',
               'Your Class is Added.Wait for approved',
               'success'
-            )
+            );
+            navigate('/dashboard/myclasses');
            
           }
         })

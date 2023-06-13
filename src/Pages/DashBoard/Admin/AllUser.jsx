@@ -62,11 +62,9 @@ const AllUser = () => {
           <thead>
             <tr>
               <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
+                
               </th>
-              <th>Name</th>
+              <th>Instructors</th>
 
               <th>Make Admin</th>
               <th>Make Instructor</th>
