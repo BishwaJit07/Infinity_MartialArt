@@ -1,6 +1,6 @@
 import { FaClipboardCheck, FaHome } from "react-icons/fa";
 import { GiClassicalKnowledge } from "react-icons/gi";
-import { AiOutlineUsergroupAdd, AiOutlineUsergroupDelete } from "react-icons/ai";
+import { AiOutlineUsergroupAdd,  } from "react-icons/ai";
 import { TiTick } from "react-icons/ti";
 import { Link, Outlet } from "react-router-dom";
 import UseAdmin from "../Hooks/UseAdmin";
@@ -40,12 +40,7 @@ console.log('isInstructor',isInstructor);
  {/* Admin and Instructor */}
  {isAdmin && isInstructor && (
           <>
-            <li>
-              <Link to="dashhome" className="text-xl font-semibold">
-                <FaHome />
-                Admin
-              </Link>
-            </li>
+             <div className="divider">Admin Home</div>
             <li>
               <Link to="alluser" className="text-xl font-semibold">
                 <AiOutlineUsergroupAdd />
@@ -59,15 +54,10 @@ console.log('isInstructor',isInstructor);
               </Link>
             </li>
 
-            <div className="divider"></div>
+            <div className="divider">Instructor Home</div>
 
 
-            <li>
-              <Link to="instructorhome" className="text-xl font-semibold">
-                <FiHome />
-                Instructor Home
-              </Link>
-            </li>
+            
             <li>
               <Link to="addclasses" className="text-xl font-semibold">
                 <MdClass />
@@ -87,12 +77,7 @@ console.log('isInstructor',isInstructor);
         {/* Admin Only */}
         {isAdmin && !isInstructor && (
           <>
-            <li>
-              <Link to="adminhome" className="text-xl font-semibold">
-                <FaHome />
-                Admin
-              </Link>
-            </li>
+            <div className="divider">Admin Home</div>
             <li>
               <Link to="alluser" className="text-xl font-semibold">
                 <AiOutlineUsergroupAdd />
@@ -113,12 +98,7 @@ console.log('isInstructor',isInstructor);
         {/* Instructor Only */}
         {!isAdmin && isInstructor && (
           <>
-            <li>
-              <Link to="instructorhome" className="text-xl font-semibold">
-                <FiHome />
-                Instructor Home
-              </Link>
-            </li>
+            <div className="divider">Instructor Home</div>
             <li>
               <Link to="addclasses" className="text-xl font-semibold">
                 <MdClass />
@@ -138,14 +118,9 @@ console.log('isInstructor',isInstructor);
         {/* None of them */}
         {!isAdmin && !isInstructor && (
           <>
-            <li>
-                <Link to="userhome" className="text-xl font-semibold">
-                  <AiOutlineUsergroupDelete />
-                  User
-                </Link>
-              </li>
+             <div className="divider">User Home</div>
               <li>
-                <Link to="myclass" className="text-xl font-semibold">
+                <Link to="myselectedclass" className="text-xl font-semibold">
                   {" "}
                   <GiClassicalKnowledge />
                   My Selected Classes

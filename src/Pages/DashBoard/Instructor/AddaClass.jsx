@@ -1,8 +1,12 @@
-import React, { useState } from 'react';
+
+import { useState } from 'react';
+import Swal from 'sweetalert2';
 import useAuth from '../../../Hooks/useAuth';
+
 
 const AddaClass = () => {
     const {user}= useAuth();
+    
   const [classData, setClassData] = useState({
     Name: "",
     Image: "",
@@ -21,7 +25,7 @@ const AddaClass = () => {
     }));
   };
 
-  const backgroundImageUrl='https://sa.kapamilya.com/absnews/abscbnnews/media/2022/tfc/07/21/po-(pic-from-netflix).jpg';
+ 
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -37,6 +41,26 @@ const AddaClass = () => {
       Price: "",
       status: "pending",
     });
+
+    fetch('http://localhost:5000/classes',{
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(classData)
+        })
+        .then(res=> res.json())
+        .then(data => {
+          if(data.insertedId){
+           
+            Swal.fire(
+              'Well Done!',
+              'Your Class is Added.Wait for approved',
+              'success'
+            )
+           
+          }
+        })
   };
 
     return (
@@ -62,6 +86,7 @@ const AddaClass = () => {
           id="name"
           name="Name"
           className="input input-bordered input-accent w-full max-w-xs "
+          required
           placeholder="Enter Name"
           value={classData.Name}
           onChange={handleInputChange}
@@ -73,6 +98,7 @@ const AddaClass = () => {
           type="text"
           id="image"
           name="Image"
+          required
           className="input input-bordered input-accent w-full max-w-xs"
           placeholder="Enter Image URL"
           value={classData.Image}
@@ -87,6 +113,7 @@ const AddaClass = () => {
           name="InstructorName"
           className="input input-bordered input-accent w-full max-w-xs"
           placeholder="Enter Instructor Name"
+          required
           value={classData.InstructorName}
           onChange={handleInputChange}
         />
@@ -99,6 +126,7 @@ const AddaClass = () => {
           name="InstructorEmail"
           className="input input-bordered input-accent w-full max-w-xs"
           placeholder="Enter Instructor Email"
+          required
           value={classData.InstructorEmail}
           onChange={handleInputChange}
         />
@@ -111,6 +139,7 @@ const AddaClass = () => {
           name="AvailableSeats"
           className="input input-bordered input-accent w-full max-w-xs"
           placeholder="Enter Available Seats"
+          required
           value={classData.AvailableSeats}
           onChange={handleInputChange}
         />
@@ -121,6 +150,7 @@ const AddaClass = () => {
           type="number"
           id="price"
           name="Price"
+          required
           className="input input-bordered input-accent w-full max-w-xs"
           placeholder="Enter Price"
           value={classData.Price}

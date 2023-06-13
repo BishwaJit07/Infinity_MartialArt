@@ -58,24 +58,24 @@ const Header = () => {
             
             {isAdmin && isInstructor && (
               <li>
-                <NavLink to="/dashboard/dashhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/alluser">DashBoard </NavLink>
               </li>
             )}
 
             {isAdmin && !isInstructor && (
               <li>
-                <NavLink to="/dashboard/dashhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/alluser">DashBoard </NavLink>
               </li>
             )}
 
             {!isAdmin && isInstructor && (
               <li>
-                <NavLink to="/dashboard/instructorhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/myclasses">DashBoard </NavLink>
               </li>
             )}
             {!isAdmin && !isInstructor && (
               <li>
-                <NavLink to="/dashboard/userhome">DashBoard </NavLink>
+                <NavLink to="/dashboard/myselectedclass">DashBoard </NavLink>
               </li>
             )}
             </ul>

@@ -68,8 +68,9 @@ const MangeClasses = () => {
  
   return (
     <div>
+      <h3 className="text-center text-pink-700 text-4xl font font-semibold font-serif">Manage all Classes</h3>
       <div className="overflow-x-auto">
-        <table className="table bg-gray-200 my-4">
+        <table className="table bg-gray-200 m-4">
           {/* head */}
           <thead>
             <tr>
@@ -84,7 +85,7 @@ const MangeClasses = () => {
               <th>Price</th>
               <th>Feedback</th>
               <th>Status</th>
-              <th></th>
+              
             </tr>
           </thead>
           <tbody>
@@ -125,7 +126,7 @@ const MangeClasses = () => {
                 <td>{classItem.AvailableSeats}</td>
 
                 <td>${classItem.Price}</td>
-
+                    
                 <td>
                   <textarea
                     className="textarea textarea-secondary"

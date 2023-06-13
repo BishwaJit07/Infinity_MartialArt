@@ -7,16 +7,16 @@ import AllClasses from "../Pages/AllClasses";
 
 import AllUser from "../Pages/DashBoard/Admin/AllUser";
 import MangeClasses from "../Pages/DashBoard/Admin/MangeClasses";
-import InstructorHome from "../Pages/DashBoard/Instructor/InstructorHome";
+
 import EnrollClass from "../Pages/DashBoard/Users/EnrollClass";
 import MySelectedClass from "../Pages/DashBoard/Users/MySelectedClass";
-import UserHome from "../Pages/DashBoard/Users/UserHome";
+
 import Instructors from "../Pages/Instructors";
 import Login from "../SignUp/Login";
 
 import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
-import DashHome from "../Pages/DashBoard/Admin/DashHome";
+
 import Payments from "../Pages/DashBoard/Payments";
 import AddaClass from "../Pages/DashBoard/Instructor/addaClass";
 import MyClasses from "../Pages/DashBoard/Instructor/MyClasses";
@@ -69,28 +69,19 @@ const router = createBrowserRouter([
         </PrivateRoute>        
        ,
         children:[
-            {
-                path:'dashhome',
-                element:<DashHome/> ,
-            },
+            
             {
                 path:'manageclasses',
                 element: <MangeClasses/>,
             },
 
-            {
-                path:'userhome',
-                element: <UserHome/>,
-            },
+            
             {
                 path:'alluser',
                 element: <AllUser/>,
             },
 
-            {
-                path:'instructorhome',
-                element: <InstructorHome/>,
-            },
+          
             {
                 path:'addclasses',
                 element: <AddaClass/>,
@@ -106,7 +97,7 @@ const router = createBrowserRouter([
             },
 
             {
-                path:'myclass',
+                path:'myselectedclass',
                 element:<MySelectedClass/>,
             },
             {
