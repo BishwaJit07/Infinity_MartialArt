@@ -5,7 +5,7 @@ const InstructorHome = () => {
    
     return (
         <div>
-            
+            instuctor
         </div>
     );
 };

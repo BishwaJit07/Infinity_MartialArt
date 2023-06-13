@@ -6,6 +6,7 @@ import { Link, Outlet } from "react-router-dom";
 import UseAdmin from "../Hooks/UseAdmin";
 import UseInstructor from "../Hooks/UseInstructor";
 import { MdClass } from "react-icons/md";
+import { FiHome } from "react-icons/fi";
 
 const DashBoard = () => {
 
@@ -40,7 +41,7 @@ console.log('isInstructor',isInstructor);
  {isAdmin && isInstructor && (
           <>
             <li>
-              <Link to="adminhome" className="text-xl font-semibold">
+              <Link to="dashhome" className="text-xl font-semibold">
                 <FaHome />
                 Admin
               </Link>
@@ -57,6 +58,29 @@ console.log('isInstructor',isInstructor);
                 ManageClasses
               </Link>
             </li>
+
+            <div className="divider"></div>
+
+
+            <li>
+              <Link to="instructorhome" className="text-xl font-semibold">
+                <FiHome />
+                Instructor Home
+              </Link>
+            </li>
+            <li>
+              <Link to="addclasses" className="text-xl font-semibold">
+                <MdClass />
+                Add a Class
+              </Link>
+            </li>
+            <li>
+              <Link to="myclasses" className="text-xl font-semibold">
+                <MdClass />
+                My Classes
+              </Link>
+            </li>
+
           </>
         )}
 
@@ -81,12 +105,20 @@ console.log('isInstructor',isInstructor);
                 ManageClasses
               </Link>
             </li>
+
+
           </>
         )}
 
         {/* Instructor Only */}
         {!isAdmin && isInstructor && (
           <>
+            <li>
+              <Link to="instructorhome" className="text-xl font-semibold">
+                <FiHome />
+                Instructor Home
+              </Link>
+            </li>
             <li>
               <Link to="addclasses" className="text-xl font-semibold">
                 <MdClass />

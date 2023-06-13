@@ -18,6 +18,8 @@ import SignUp from "../SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import DashHome from "../Pages/DashBoard/Admin/DashHome";
 import Payments from "../Pages/DashBoard/Payments";
+import AddaClass from "../Pages/DashBoard/Instructor/addaClass";
+import MyClasses from "../Pages/DashBoard/Instructor/MyClasses";
 
 
 
@@ -88,6 +90,14 @@ const router = createBrowserRouter([
             {
                 path:'instructorhome',
                 element: <InstructorHome/>,
+            },
+            {
+                path:'addclasses',
+                element: <AddaClass/>,
+            },
+            {
+                path:'myclasses',
+                element: <MyClasses/>,
             },
 
             {

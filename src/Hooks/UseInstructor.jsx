@@ -10,9 +10,9 @@ const UseInstructor = () => {
     const {user} = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const {data:isInstructor=[],isLoading: isInstructorLoading} = useQuery({
-    queryKey:['isInstructor', user?.email],
+    queryKey:['isInstructor', user?.email],enabled:!!user?.email && !! localStorage.getItem('jwt-access-token'),
     queryFn: async()=>{
-        const res = await axiosSecure.get(`/users/instructor/${user.email}`)
+        const res = await axiosSecure.get(`/users/instructor/${user?.email}`)
         console.log('check if user is instructor',res);
         return res.data.instructor;
     }
