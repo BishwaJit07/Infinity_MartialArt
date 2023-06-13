@@ -15,12 +15,12 @@ const UseClasses = () => {
 //     },[])
 
 
-    const { data: martialClass = [],   } = useQuery(['marttialclass'], async () => {
+    const { data: martialClass = [], refetch  } = useQuery(['marttialclass'], async () => {
         const res = await fetch('http://localhost:5000/classes');
         return res.json();
       });
 
-    return [martialClass]
+    return [martialClass,refetch]
 
 };
 
