@@ -31,7 +31,7 @@ const [isInstructor]= UseInstructor();
          
           
           email:user.email}
-        fetch('https://infinitymarttialarts.vercel.app/selected',{
+        fetch('http://localhost:5000/selected',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

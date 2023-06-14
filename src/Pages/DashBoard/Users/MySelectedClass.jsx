@@ -1,7 +1,7 @@
-import { useQuery } from "@tanstack/react-query";
+
 import { AiFillDelete } from "react-icons/ai";
-import { FiDelete } from "react-icons/fi";
-import { Link } from "react-router-dom";
+
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
@@ -34,15 +34,21 @@ const [axiosSecure]= useAxiosSecure();
     });
   };
 
-  const total = Array.isArray(sClass)
-    ? sClass.reduce((sum, item) => item.Price + sum, 0)
-    : 0;
-
+  
+ const navigate = useNavigate();
+ 
+const handleNavigate =(userClasss)=>{
+  navigate('/dashboard/payment',{
+    state:{price: userClasss.Price,
+      id:userClasss.classid }
+    
+  })
+}
   return (
     <div>
       <div className="overflow-x-auto">
         <div className="flex justify-between">
-          <p className="text-xl font-bold">Total:${total}</p>
+          
          
         </div>
         <table className="table bg-gray-200 my-4">
@@ -64,7 +70,7 @@ const [axiosSecure]= useAxiosSecure();
 
             {Array.isArray(sClass) &&
               sClass.map((userClasss, index) => (
-                <tr key={sClass._id}>
+                <tr key={userClasss._id}>
                   <th>{index + 1}</th>
                   <td>
                     <div className="flex items-center space-x-3">
@@ -94,12 +100,12 @@ const [axiosSecure]= useAxiosSecure();
                     <AiFillDelete className="text-white text-xl " />
                   </td>
                   <td>
-                  <Link
-            to="/dashboard/payment"
-            className="btn btn-secondary text-white hover:bg-red-500"
+                  <button onClick={()=>handleNavigate(userClasss)}
+             
+            className="btn glass bg-yellow-600 text-white hover:bg-red-800"
           >
             Pay
-          </Link>
+          </button>
                   </td>
                 </tr>
               ))}

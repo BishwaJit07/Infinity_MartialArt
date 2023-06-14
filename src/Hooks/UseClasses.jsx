@@ -7,7 +7,7 @@ const UseClasses = () => {
 
 
     const { data: martialClass = [], refetch  } = useQuery(['marttialclass'], async () => {
-        const res = await fetch('https://infinitymarttialarts.vercel.app/classes');
+        const res = await fetch('http://localhost:5000/classes');
         return res.json();
       });
 

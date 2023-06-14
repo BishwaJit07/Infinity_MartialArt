@@ -32,7 +32,7 @@ const MangeClasses = () => {
       return;
     }
 
-    fetch(`https://infinitymarttialarts.vercel.app/classes/${classItem._id}`, {
+    fetch(`http://localhost:5000/classes/${classItem._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

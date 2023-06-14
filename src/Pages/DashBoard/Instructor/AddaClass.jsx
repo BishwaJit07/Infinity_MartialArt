@@ -45,7 +45,7 @@ const AddaClass = () => {
       status: "pending",
     });
 
-    fetch('https://infinitymarttialarts.vercel.app/classes',{
+    fetch('http://localhost:5000/classes',{
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'

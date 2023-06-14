@@ -8,7 +8,7 @@ const useSelectedClass = () => {
   const [axiosSecure] = useAxiosSecure();
   
   // const { data: sClass = [], refetch } = useQuery(['sClass', user?.email], async () => {
-  //     const res = await fetch(`https://infinitymarttialarts.vercel.app/selected?email=${user?.email}`,{
+  //     const res = await fetch(`http://localhost:5000/selected?email=${user?.email}`,{
   //       headers:{
   //         authorization:`userToken ${token}`
   //       }
