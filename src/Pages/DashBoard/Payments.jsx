@@ -6,7 +6,7 @@ import { useLocation } from "react-router-dom";
 import Titles from "../../Hooks/Titles";
 
 
-import ChekOutFrom from "./ChekOutFrom";
+import ChekOutFrom from "../ChekOutFrom";
 
 const stripePromise = loadStripe(import.meta.env.VITE_gateway_Key);
 const Payments = () => {

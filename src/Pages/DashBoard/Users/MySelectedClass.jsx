@@ -40,7 +40,7 @@ const [axiosSecure]= useAxiosSecure();
 const handleNavigate =(userClasss)=>{
   navigate('/dashboard/payment',{
     state:{price: userClasss.Price,
-      id:userClasss.classid }
+      id:userClasss._id }
     
   })
 }

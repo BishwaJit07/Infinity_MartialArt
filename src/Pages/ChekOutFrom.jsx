@@ -1,10 +1,13 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import { useEffect } from "react";
 import { useState } from "react";
-import useAuth from "../../Hooks/useAuth";
-import useAxiosSecure from "../../Hooks/useAxiosSecure";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../Hooks/useAuth";
+import useAxiosSecure from "../Hooks/useAxiosSecure";
+import useSelectedClass from "../Hooks/useSelectedClass";
 
-const ChekOutFrom = ({ price, id,Name,Image,Price }) => {
+const ChekOutFrom = ({ price, id, }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
@@ -12,7 +15,8 @@ const ChekOutFrom = ({ price, id,Name,Image,Price }) => {
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
   const [processing, setProcessing] = useState(false);
-
+const navigate = useNavigate();
+const {sClass}= useSelectedClass();
   const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
@@ -72,15 +76,30 @@ const ChekOutFrom = ({ price, id,Name,Image,Price }) => {
 
       const payment ={email: user?.email,transactionId:paymentIntent.id,
       id:id,
-      Name:Name,
-      Image: Image,
-      Price: Price    
+        
     }
       console.log(payment);
       axiosSecure.post('/payment',payment)
       .then (res=>{
        console.log(res.data);
-       
+       if(res.data.insertedId){
+        
+        Swal.fire(
+          'Good job!',
+          'Payment Done!',
+          'success'
+        )
+        
+        axiosSecure.delete(`/selected/${id}`).then((res) => {
+          console.log("deleted res", res.data);
+          if (res.data.deletedCount > 0) {
+            
+            Swal.fire("Deleted!", "Your selected class has been deleted.", "success");
+          }
+        });
+
+        navigate('/dashboard/myselectedclass')
+      }
       })
     }
   };
