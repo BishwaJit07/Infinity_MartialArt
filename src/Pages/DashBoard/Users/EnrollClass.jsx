@@ -16,12 +16,10 @@ const EnrollClass = () => {
         }
 
   })
- 
-  
-const {user}=useAuth;
 
-  const [martialClass] = UseClasses();
-console.log(martialClass);
+  
+const {user}=useAuth();
+
     return (
         <div>
             <Titles priHeading={"My Enrolled Classes"} secHeading={'Never Give up,Keep practise'}></Titles>
@@ -51,7 +49,7 @@ console.log(martialClass);
 
             {Array.isArray(paid) &&
   paid.map((paidClass, index) => {
-    if (user.email === paidClass.email) {
+    if (paidClass?.email === user?.email) {
       return (
         <tr key={paidClass._id}>
           <th>{index + 1}</th>
