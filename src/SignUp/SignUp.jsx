@@ -135,8 +135,8 @@ const SignUp = () => {
               minLength: 6,
               maxLength: 16,
 
-              // todo
-              // pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])/ ,
+              
+              pattern: /^(?=.*[A-Z])(?=.*[!@#$%^&*])/ ,
             })}
             className="input input-bordered"
           />
