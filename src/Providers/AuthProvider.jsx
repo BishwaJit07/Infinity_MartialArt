@@ -69,7 +69,7 @@ const AuthProvider = ({ children }) => {
       console.log("current User", currentUser);
 
       // jwt token 
-       if(currentUser){ axios.post('http://localhost:5000/jwt',{email: currentUser.email})
+       if(currentUser){ axios.post('https://infinitymarttialarts.vercel.app/jwt',{email: currentUser.email})
        .then(data=>{
         console.log(data.data.jwtToken)
   localStorage.setItem('jwt-access-token', data.data.jwtToken)

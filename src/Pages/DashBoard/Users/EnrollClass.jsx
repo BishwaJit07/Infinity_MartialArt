@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+
 import Titles from '../../../Hooks/Titles';
-import useAuth from '../../../Hooks/useAuth';
+
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import UseClasses from '../../../Hooks/UseClasses';
 
@@ -17,7 +17,7 @@ const EnrollClass = () => {
   })
  
   
-const {user}=useAuth();
+
 
   const [martialClass] = UseClasses();
 console.log(martialClass);
