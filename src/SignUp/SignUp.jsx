@@ -2,6 +2,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../Hooks/useAuth";
 import GoogleLogin from "../Shared/GoogleLogin";
+import Swal from "sweetalert2";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -44,7 +45,11 @@ const SignUp = () => {
             .then((data) => {
               if (data.insertedId) {
                 reset();
-
+                Swal.fire(
+                  'Good job!',
+                  'Signup Done!',
+                  'success'
+                )
                 navigate(from, { replace: true });
               }
             });
@@ -54,16 +59,7 @@ const SignUp = () => {
         });
     });
   };
-  //   // const handleSignin =(e)=>{
-  //   //   e.preventDefault();
-  //   //   const form = e.target;
-  //   //   const email = form.email.value;
-  //   //   const password = form.pass.value;
-  //   //   const confirmPassword = form.Confirmpass.value;
-  //   //   const PhotoUrl = form.photoUrl.value;
-  //   //   console.log(email,password,confirmPassword,PhotoUrl);
 
-  // }
 
   return (
     <div className="hero min-h-screen  ">
@@ -141,18 +137,18 @@ const SignUp = () => {
             className="input input-bordered"
           />
           {errors.pass?.type === "required" && (
-            <p className="text-red-600 bg-white">First name is required</p>
+            <p className="text-red-600 bg-white m-2">First name is required</p>
           )}
           {errors.pass?.type === "minLength" && (
-            <p className="text-red-600 bg-white">Minimum 6 character required</p>
+            <p className="text-red-600 bg-white m-2">Minimum 6 character required</p>
           )}
           {errors.pass?.type === "maxLength" && (
-            <p className="text-red-600 bg-white">maximum character should be under 20</p>
+            <p className="text-red-600 bg-white m-2">maximum character should be under 20</p>
           )}
         </div>
         <div className="form-control">
           <label className="label">
-            <span className="label-text text-white">Confirm Password</span>
+            <span className="label-text text-white ">Confirm Password</span>
           </label>
           <input
             type="password"
@@ -166,10 +162,10 @@ const SignUp = () => {
             className="input input-bordered"
           />
           {errors.confirmpass?.type === "required" && (
-            <p className="text-red-600 bg-white">Confirm Password is required</p>
+            <p className="text-red-600 bg-white m-2">Confirm Password is required</p>
           )}
           {errors.confirmpass?.type === "validate" && (
-            <p className="text-red-600 bg-white">{errors.confirmpass.message}</p>
+            <p className="text-red-600 m-2 bg-white">{errors.confirmpass.message}</p>
           )}
         </div>
 

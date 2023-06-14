@@ -77,6 +77,7 @@ const navigate = useNavigate();
       id:id,Name:Name,InstructorName:InstructorName,
       enroll:enroll,
       Image:Image,
+      Price:price,
     }
       console.log(payment);
       axiosSecure.post('/payment',payment)
@@ -103,7 +104,7 @@ const navigate = useNavigate();
   return (
     <>
       <form className="w-96 bg-red my-10" onSubmit={handleSubmit}>
-        <p className="text-xl font-medium text-center mb-4">Total:{price}</p>
+        <p className="text-xl font-medium text-center mb-4">Total: ${price}</p>
         <CardElement
           options={{
             style: {

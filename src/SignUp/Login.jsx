@@ -1,6 +1,7 @@
 
 import { FcGoogle } from 'react-icons/fc';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
 import useAuth from '../Hooks/useAuth';
 import GoogleLogin from '../Shared/GoogleLogin';
 
@@ -23,7 +24,11 @@ const Login = () => {
         .then(result=>{
           const user = result.user;
           console.log(user);
-
+          Swal.fire(
+            'Good job!',
+            'Login Done!',
+            'success'
+          )
           navigate(from,{replace:true});
         })
     }

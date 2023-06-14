@@ -1,6 +1,7 @@
 import { useState } from "react";
 import About from "./HomeComponent/About";
 import Banner from "./HomeComponent/Banner";
+import PopularClass from "./HomeComponent/PopularClass";
 import PopularInstructor from "./HomeComponent/PopularInstructor";
 import Services from "./HomeComponent/Services";
 
@@ -14,6 +15,7 @@ const Home = () => {
  <Banner/>
 
     <Services/>
+    <PopularClass/>
     <PopularInstructor/>
     <About/>
  <SliderMarquee/>

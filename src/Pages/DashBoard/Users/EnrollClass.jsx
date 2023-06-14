@@ -34,13 +34,9 @@ const {user}=useAuth();
           {/* head */}
           <thead>
             <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
+             
               <th>Name</th>
-              <th>Available Seat</th>
+              
               <th>Price</th>
             </tr>
           </thead>
@@ -52,7 +48,7 @@ const {user}=useAuth();
     if (paidClass?.email === user?.email) {
       return (
         <tr key={paidClass._id}>
-          <th>{index + 1}</th>
+         
           <td>
             <div className="flex items-center space-x-3">
               <div className="avatar">
@@ -71,7 +67,7 @@ const {user}=useAuth();
               </div>
             </div>
           </td>
-          <td>{paidClass?.AvailableSeats}</td>
+         
           <td>${paidClass?.Price}</td>
           <td>
             <span className="bg-green-300 text-black p-2">Paid</span>
