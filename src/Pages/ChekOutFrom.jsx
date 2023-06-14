@@ -5,18 +5,17 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../Hooks/useAuth";
 import useAxiosSecure from "../Hooks/useAxiosSecure";
-import useSelectedClass from "../Hooks/useSelectedClass";
 
-const ChekOutFrom = ({ price, id, }) => {
+const ChekOutFrom = ({ price, id,Name,InstructorName,Image,enroll }) => {
   const stripe = useStripe();
   const elements = useElements();
   const [cardError, setCardError] = useState("");
   const { user } = useAuth();
   const [axiosSecure] = useAxiosSecure();
   const [clientSecret, setClientSecret] = useState("");
-  const [processing, setProcessing] = useState(false);
+  
 const navigate = useNavigate();
-const {sClass}= useSelectedClass();
+
   const [transactionId, setTransactionId] = useState("");
 
   useEffect(() => {
@@ -51,7 +50,7 @@ const {sClass}= useSelectedClass();
       setCardError("");
     }
 
-    setProcessing(true);
+    
 
     const { paymentIntent, error: confirmError } =
       await stripe.confirmCardPayment(clientSecret, {
@@ -66,17 +65,18 @@ const {sClass}= useSelectedClass();
 
     if (confirmError) {
       setCardError(confirmError);
-    }
+    } 
     console.log(paymentIntent);
 
-    setProcessing(false);
+    
 
     if (paymentIntent.status === "succeeded") {
       setTransactionId(paymentIntent.id);
 
       const payment ={email: user?.email,transactionId:paymentIntent.id,
-      id:id,
-        
+      id:id,Name:Name,InstructorName:InstructorName,
+      enroll:enroll,
+      Image:Image,
     }
       console.log(payment);
       axiosSecure.post('/payment',payment)
@@ -92,13 +92,10 @@ const {sClass}= useSelectedClass();
         
         axiosSecure.delete(`/selected/${id}`).then((res) => {
           console.log("deleted res", res.data);
-          if (res.data.deletedCount > 0) {
-            
-            Swal.fire("Deleted!", "Your selected class has been deleted.", "success");
-          }
+       
         });
 
-        navigate('/dashboard/myselectedclass')
+        navigate('/dashboard/enrollclass')
       }
       })
     }

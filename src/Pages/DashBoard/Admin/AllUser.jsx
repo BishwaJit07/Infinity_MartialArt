@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import { RiAdminLine } from "react-icons/ri";
 import { MdSportsMartialArts } from "react-icons/md";
 import Swal from "sweetalert2";
+import Titles from "../../../Hooks/Titles";
 
 const AllUser = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -56,6 +57,7 @@ const AllUser = () => {
 
   return (
     <div>
+       <Titles priHeading={"All Users"} secHeading={'Manage All users'}></Titles>
       <div className="overflow-x-auto">
         <table className="table bg-gray-200 my-4">
           {/* head */}

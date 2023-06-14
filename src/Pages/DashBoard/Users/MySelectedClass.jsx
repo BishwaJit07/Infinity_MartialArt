@@ -3,6 +3,7 @@ import { AiFillDelete } from "react-icons/ai";
 
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import Titles from "../../../Hooks/Titles";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 
 import useSelectedClass from "../../../Hooks/useSelectedClass";
@@ -40,12 +41,19 @@ const [axiosSecure]= useAxiosSecure();
 const handleNavigate =(userClasss)=>{
   navigate('/dashboard/payment',{
     state:{price: userClasss.Price,
-      id:userClasss._id }
+      id:userClasss._id,
+      Name:userClasss.Name,
+    InstructorName:userClasss.InstructorName,
+    enroll:userClasss?.enroll,
+    Image:userClasss.Image,
+    
+  }
     
   })
 }
   return (
     <div>
+      <Titles priHeading={"Your Cart"} > </Titles>
       <div className="overflow-x-auto">
         <div className="flex justify-between">
           

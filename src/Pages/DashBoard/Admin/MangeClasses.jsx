@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useState } from "react";
 import Swal from "sweetalert2";
+import Titles from "../../../Hooks/Titles";
 
 import UseClasses from "../../../Hooks/UseClasses";
 import { AuthContext } from "../../../Providers/AuthProvider";
@@ -49,15 +50,11 @@ const MangeClasses = () => {
         console.log(data);
         if (data.modifiedCount > 0) {   refetch();
           
-          Swal.fire({
-            title: "Sweet!",
-            text: 'done',
-            imageUrl:
-              "https://png.pngtree.com/png-vector/20190301/ourmid/pngtree-vector-administration-icon-png-image_747092.jpg",
-            imageWidth: 200,
-            imageHeight: 200,
-            imageAlt: "Custom image",
-          }); 
+          Swal.fire(
+            'Good job!',
+            'Class Added!',
+            'success'
+          )
         }
       })
       .catch((error) => {
@@ -69,7 +66,8 @@ const MangeClasses = () => {
  
   return (
     <div>
-      <h3 className="text-center text-pink-700 text-4xl font font-semibold font-serif">Manage all Classes</h3>
+      <Titles priHeading={"All Classes"} secHeading={'Manage All Classes'}></Titles>
+      
       <div className="overflow-x-auto">
         <table className="table bg-gray-200 m-4">
           {/* head */}

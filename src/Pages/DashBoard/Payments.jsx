@@ -13,7 +13,7 @@ const Payments = () => {
   
  
   const location = useLocation();
-  const { price,id } = location.state || {};
+  const { price,id,Name,InstructorName,Image,enroll } = location.state || {};
 
   console.log(location);
 
@@ -22,7 +22,7 @@ const Payments = () => {
       <Titles priHeading={"Make payment"} secHeading={'Get ready for the class'} ></Titles>
       {price && (
         <Elements stripe={stripePromise}>
-          <ChekOutFrom price={price} id={id} />
+          <ChekOutFrom price={price} id={id} Name={Name} InstructorName={InstructorName} enroll={enroll} Image={Image}/>
         </Elements>
       )}
     </div>

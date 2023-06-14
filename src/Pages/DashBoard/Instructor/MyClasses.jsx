@@ -1,4 +1,5 @@
 import React from 'react';
+import Titles from '../../../Hooks/Titles';
 import useAuth from '../../../Hooks/useAuth';
 import UseClasses from '../../../Hooks/UseClasses';
 
@@ -7,6 +8,7 @@ const MyClasses = () => {
     const {user}= useAuth();
     return (
         <div>
+          <Titles priHeading={"My Classes"} ></Titles>
         <table className="table bg-gray-200 m-4">
   <thead>
     <tr>
