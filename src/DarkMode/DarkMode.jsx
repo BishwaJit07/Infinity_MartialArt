@@ -5,7 +5,7 @@ import "./DarkMode.css";
 
 const DarkMode = () => {
     const setDarkMode =()=>{
-        document.querySelector('html').setAttribute('data-theme','dark')
+        document.querySelector('html').setAttribute('data-theme','night')
     }
     const setLightMode =()=>{
         document.querySelector('html').setAttribute('data-theme','light')

@@ -37,7 +37,7 @@ const ChekOutFrom = () => {
   }
   return (
    <>
-    <form className='w-96 bg-red my-5' onSubmit={handleSubmit}>
+    <form className='w-96 bg-red my-10' onSubmit={handleSubmit}>
     <CardElement
       options={{
         style: {
@@ -54,7 +54,7 @@ const ChekOutFrom = () => {
         },
       }}
     />
-    <button className='btn bg-pink-600 text-teal-50' type="submit" disabled={!stripe}>
+    <button className='btn bg-pink-600 text-teal-50 m-2' type="submit" disabled={!stripe}>
       Pay
     </button>
   </form>

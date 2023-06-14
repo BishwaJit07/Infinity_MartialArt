@@ -1,6 +1,7 @@
 
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Titles from "../../Hooks/Titles";
 
 import useSelectedClass from "../../Hooks/useSelectedClass";
 import ChekOutFrom from "./ChekOutFrom";
@@ -13,7 +14,8 @@ const Payments = () => {
     : 0;
   const totalPrice = parseFloat(total.toFixed(2));
   return (
-    <div>
+    <div className="mx-auto my-20">
+      <Titles priHeading={"Make payment"} secHeading={'Get ready for the class'} ></Titles>
       <Elements stripe={stripePromise}>
         <ChekOutFrom price={totalPrice} sClass={sClass}></ChekOutFrom>
       </Elements>

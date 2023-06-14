@@ -1,4 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
+import Titles from '../../Hooks/Titles';
 import useAxiosSecure from '../../Hooks/useAxiosSecure';
 
 const PopularInstructor = () => {
@@ -14,7 +15,8 @@ const PopularInstructor = () => {
   console.log(instructors);
     return (
     <div>
-            <h3 className="text-center text-white text-4xl font font-semibold font-serif bg-blue-700 p-2 rounded mx-4">Popular Instructors</h3>
+      <Titles priHeading={"Popular Instructors"} secHeading={'some of our top Instructor'}></Titles>
+          
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 justify-center ">
               
   {Array.isArray(instructors) &&

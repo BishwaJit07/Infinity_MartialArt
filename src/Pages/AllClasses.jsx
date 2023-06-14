@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Titles from '../Hooks/Titles';
 import UseAdmin from '../Hooks/UseAdmin';
 import useAuth from '../Hooks/useAuth';
 import UseClasses from '../Hooks/UseClasses';
@@ -76,6 +77,7 @@ Swal.fire({
  
     return (
        <div>
+        <Titles priHeading={"All Martial Art Class"} secHeading={'ChekOuts Our latest classes '}></Titles>
          <div className='grid grid-cols-1
         md:grid-cols-2 mx-auto content-center	'>
             {martialClass.map((classItem) => {

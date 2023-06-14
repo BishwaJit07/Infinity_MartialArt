@@ -43,12 +43,7 @@ const [axiosSecure]= useAxiosSecure();
       <div className="overflow-x-auto">
         <div className="flex justify-between">
           <p className="text-xl font-bold">Total:${total}</p>
-          <Link
-            to="/dashboard/payment"
-            className="btn btn-secondary text-white hover:bg-red-500"
-          >
-            Pay
-          </Link>
+         
         </div>
         <table className="table bg-gray-200 my-4">
           {/* head */}
@@ -97,6 +92,14 @@ const [axiosSecure]= useAxiosSecure();
                     className="btn bg-red-600 rounded-full m-2 hover:bg-red-900"
                   >
                     <AiFillDelete className="text-white text-xl " />
+                  </td>
+                  <td>
+                  <Link
+            to="/dashboard/payment"
+            className="btn btn-secondary text-white hover:bg-red-500"
+          >
+            Pay
+          </Link>
                   </td>
                 </tr>
               ))}

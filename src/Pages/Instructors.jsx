@@ -1,4 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
+import Titles from "../Hooks/Titles";
 
 const Instructors = () => {
   const { data: users = [], refetch } = useQuery(["users"], async () => {
@@ -9,7 +10,8 @@ const Instructors = () => {
 
 
   return (
-   
+   <div>
+     <Titles priHeading={"Popular Instructors"} secHeading={'some of our top Instructor'}></Titles>
     <div className="grid grid-cols-1 md:grid-cols-2 gap-2 justify-center ">
     {Array.isArray(users) &&
       users.map((user) => {
@@ -32,6 +34,7 @@ const Instructors = () => {
         return null;
       })}
   </div>
+   </div>
 
   )}
 
