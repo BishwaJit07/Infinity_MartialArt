@@ -5,6 +5,7 @@ import { FiLogOut } from "react-icons/fi";
 import useSelectedClass from "../Hooks/useSelectedClass";
 import UseAdmin from "../Hooks/UseAdmin";
 import UseInstructor from "../Hooks/UseInstructor";
+import DarkMode from "../DarkMode/DarkMode";
 
 const Header = () => {
   const [isAdmin] = UseAdmin();
@@ -125,7 +126,9 @@ const Header = () => {
 
           </ul>
         </div>
+        <div> <DarkMode/></div>
         <div className="navbar-end">
+         
           {user ? (
             <div className="flex justify-center items-center">
               {user?.photoURL && (
