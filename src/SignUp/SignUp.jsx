@@ -141,13 +141,13 @@ const SignUp = () => {
             className="input input-bordered"
           />
           {errors.pass?.type === "required" && (
-            <p className="text-red-600">First name is required</p>
+            <p className="text-red-600 bg-white">First name is required</p>
           )}
           {errors.pass?.type === "minLength" && (
-            <p className="text-red-600">Minimum 6 character required</p>
+            <p className="text-red-600 bg-white">Minimum 6 character required</p>
           )}
           {errors.pass?.type === "maxLength" && (
-            <p className="text-red-600">maximum character should be under 20</p>
+            <p className="text-red-600 bg-white">maximum character should be under 20</p>
           )}
         </div>
         <div className="form-control">
@@ -166,10 +166,10 @@ const SignUp = () => {
             className="input input-bordered"
           />
           {errors.confirmpass?.type === "required" && (
-            <p className="text-red-600">Confirm Password is required</p>
+            <p className="text-red-600 bg-white">Confirm Password is required</p>
           )}
           {errors.confirmpass?.type === "validate" && (
-            <p className="text-red-600">{errors.confirmpass.message}</p>
+            <p className="text-red-600 bg-white">{errors.confirmpass.message}</p>
           )}
         </div>
 

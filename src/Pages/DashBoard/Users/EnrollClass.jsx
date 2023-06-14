@@ -1,6 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 
 import Titles from '../../../Hooks/Titles';
+import useAuth from '../../../Hooks/useAuth';
 
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import UseClasses from '../../../Hooks/UseClasses';
@@ -17,7 +18,7 @@ const EnrollClass = () => {
   })
  
   
-
+const {user}=useAuth;
 
   const [martialClass] = UseClasses();
 console.log(martialClass);
@@ -49,36 +50,40 @@ console.log(martialClass);
             {/* row 1 */}
 
             {Array.isArray(paid) &&
-              paid.map((paidClass, index) => (
-                <tr key={paidClass._id}>
-                  <th>{index + 1}</th>
-                  <td>
-                    <div className="flex items-center space-x-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={paidClass?.Image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                      <div>
-                        <div className="font-bold">{paidClass?.Name}</div>
-                        <div className="text-sm opacity-50">
-                          {paidClass?.InstructorName}
-                        </div>
-                      </div>
-                    </div>
-                  </td>
-                  <td>{paidClass?.AvailableSeats}</td>
-                  <td>${paidClass?.Price}</td>
+  paid.map((paidClass, index) => {
+    if (user.email === paidClass.email) {
+      return (
+        <tr key={paidClass._id}>
+          <th>{index + 1}</th>
+          <td>
+            <div className="flex items-center space-x-3">
+              <div className="avatar">
+                <div className="mask mask-squircle w-12 h-12">
+                  <img
+                    src={paidClass?.Image}
+                    alt="Avatar Tailwind CSS Component"
+                  />
+                </div>
+              </div>
+              <div>
+                <div className="font-bold">{paidClass?.Name}</div>
+                <div className="text-sm opacity-50">
+                  {paidClass?.InstructorName}
+                </div>
+              </div>
+            </div>
+          </td>
+          <td>{paidClass?.AvailableSeats}</td>
+          <td>${paidClass?.Price}</td>
+          <td>
+            <span className="bg-green-300 text-black p-2">Paid</span>
+          </td>
+        </tr>
+      );
+    }
+    return null;
+  })}
 
-                 
-                  <td>
-                 <span className='bg-green-300 text-black p-2'>Paid</span>
-                  </td>
-                </tr>
-              ))}
           </tbody>
         </table>
       </div>
