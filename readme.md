@@ -1,7 +1,7 @@
   <h1>Project Name: InfinityMarttialArts</h1>
   <h2>liveLink </h2>
    <p> https://infinitymarttialarts.web.app/</p>
-<h2>Admin mail: bishwajit21@gmail pass: 12345678 <h2>
+<h2>Admin mail: bishwajitr21@gmail.com pass: 12345678 <h2>
   <h3>Features:</h3>
   <ul>
     <li>Class Listings: View and browse through a variety of martial arts classes offered at the studio.</li>
